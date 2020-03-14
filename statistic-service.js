@@ -8,17 +8,18 @@ const CORONAVIRUS_LINK = 'https://www.worldometers.info/coronavirus/';
 var previousResult = {};
 
 statRepository.getLastStatistic((data) => {
-    logger.info(data);
+    // logger.info(data);
 })
 
 function compareResult(curRes) {
     var newData = [];
-    logger.info(JSON.stringify(curRes));
     Object.keys(curRes).forEach((country) => {
         var curCountry = curRes[country];
         var prevCountry = previousResult[country] || {};
 
-        if (calculateTotalCases(curCountry) > calculateTotalCases(prevCountry)) {
+        // check new cases or deaths
+        if (isNewCases(curCountry, prevCountry) ||
+            isNewDeaths(curCountry, prevCountry) || true) {
             newData.push(curCountry);
         }
     });
@@ -26,8 +27,21 @@ function compareResult(curRes) {
     return newData;
 };
 
+function isNewCases(curStat, prevStat) {
+    return calculateTotalCases(curStat) > calculateTotalCases(prevStat);
+}
+
+function isNewDeaths(curStat, prevStat) {
+    return calculateTotalDeaths(curStat) > calculateTotalDeaths(prevStat);
+}
+
 function calculateTotalCases(countryData) {
-    var data = countryData['TotalCases'] || "-1";
+    var data = countryData['TotalCases'] || "0";
+    return +data;
+}
+
+function calculateTotalDeaths(countryData) {
+    var data = countryData['TotalDeaths'] || "0";
     return +data;
 }
 
@@ -51,7 +65,5 @@ setInterval(() => tabletojson.convertUrl(
         if (newData.length > 0) {
             parentPort.postMessage(newData);
         }
-        logger.info('Checked');
-        // fs.writeFileSync('./res.json', JSON.stringify(curRes));
     }
 ), 10000);

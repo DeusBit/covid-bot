@@ -8,7 +8,7 @@ function addStatistic(data, callback) {
         collection.insertOne(data, function(err, result) {
 
             if (err) {
-                return logger.info(err);
+                return logger.error(err);
             }
 
             if (callback !== undefined) {
@@ -24,7 +24,7 @@ function getLastStatistic(callback) {
         const collection = db.collection("statistic");
         collection.find().sort({ "update": -1 }).limit(1).toArray((err, result) => {
             if (err) {
-                return logger.info(err);
+                return logger.error(err);
             }
 
             if (callback !== undefined) {

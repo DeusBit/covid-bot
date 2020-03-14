@@ -9,6 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bluebird": "^3.7.2",
         "mongodb": "3.5.5",
         "tabletojson": "2.0.3",
         "telegraf": "3.36.0",
