@@ -14,7 +14,7 @@ statisticService.on('message', (reply) => {
 
 const menu = new TelegrafInlineMenu('Выберите страну для наблюдения');
 
-menu.select('country', ['Украина', 'Росcия'], {
+menu.select('country', ['Украина', 'Италия'], {
     setFunc: (ctx, key) => {
         ctx.session.show = false;
         var chatId = ctx.update.callback_query.message.chat.id;
