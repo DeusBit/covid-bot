@@ -19,7 +19,7 @@ function compareResult(curRes) {
 
         // check new cases or deaths
         if (isNewCases(curCountry, prevCountry) ||
-            isNewDeaths(curCountry, prevCountry) || true) {
+            isNewDeaths(curCountry, prevCountry)) {
             newData.push(curCountry);
         }
     });
@@ -52,7 +52,7 @@ setInterval(() => tabletojson.convertUrl(
         var curRes = {
             "update": new Date(),
             "data": tablesAsJson[0].filter((data) => {
-                return data['Country,Other'] === 'Ukraine' || data['Country,Other'] === 'Russia';
+                return data['Country,Other'] === 'Ukraine' || data['Country,Other'] === 'Italy';
             }).reduce((acc, cur) => {
                 var key = cur["Country,Other"];
                 acc[key] = cur;

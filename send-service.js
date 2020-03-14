@@ -30,5 +30,5 @@ parentPort.on('message', (reply) => {
 });
 
 function generateText(data) {
-    return `Страна: ${data['Country,Other'] === 'Ukraine' ? 'Украина' : 'Россия'}%0AВсего случаев: ${data['TotalCases'] || 0}%0AНовых случаев: ${data['NewCases'] || 0}%0AВсего умерло: ${data['TotalDeaths'] || 0}%0AНовых смертей: ${data['NewDeaths'] || 0}%0AВсего вылечелось: ${data['TotalRecovered'] || 0}%0A%0AИ помните главное - не паникуйти, мойте руки и наслаждайтесь жизнью.`;
+    return `Страна: ${data['Country,Other'] === 'Ukraine' ? 'Украина' : 'Италия'}%0AВсего случаев: ${data['TotalCases'] || 0}%0AНовых случаев: ${data['NewCases'] || 0}%0AВсего умерло: ${data['TotalDeaths'] || 0}%0AНовых смертей: ${data['NewDeaths'] || 0}%0AВсего вылечелось: ${data['TotalRecovered'] || 0}%0A%0AИ помните главное - не паникуйти, мойте руки и наслаждайтесь жизнью.`;
 }

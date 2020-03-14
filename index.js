@@ -21,8 +21,8 @@ menu.select('country', ['Украина', 'Росcия'], {
         var userId = ctx.update.callback_query.from.id;
 
         subsRepo.saveUserInformation(`${userId}-${chatId}`, { "from": ctx.update.callback_query.from, "chat": ctx.update.callback_query.message.chat });
-        subsRepo.addUserSubscription(chatId, key === 'Украина' ? 'Ukraine' : 'Russia');
-        ctx.reply(`Я буду информировать тебя если в ${key === 'Украина' ? 'Украине' : 'России'} будут новые случаи заражения.`)
+        subsRepo.addUserSubscription(chatId, key === 'Украина' ? 'Ukraine' : 'Italy');
+        ctx.reply(`Я буду информировать тебя если в ${key === 'Украина' ? 'Украине' : 'Италии'} будут новые случаи заражения.`)
     },
     hide: (ctx) => !ctx.session.show
 });
